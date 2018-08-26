@@ -1,0 +1,9 @@
+
+arr=[8,9,10,11]
+sum=0
+
+for i in range(len(arr)):
+    print(f"{i}")
+    sum=sum+arr[i]
+      
+print(f"{sum}")
