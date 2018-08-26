@@ -1,0 +1,12 @@
+# Overriding method 
+
+class Parent:
+   def method(self):
+      print ('Parent method calling')
+
+class Child(Parent):
+   def method(self):
+      print ('Child method calling')
+
+c = Child()
+c.method()
