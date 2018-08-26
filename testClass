@@ -1,0 +1,11 @@
+class Emp:
+    
+    def __init__(self, sal):
+        self.sal=sal
+        
+    def meth1(self):
+        print("Salary Given:")
+        print (self.sal)
+        
+emp1=Emp(5000)
+emp1.meth1()
