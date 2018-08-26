@@ -1,0 +1,10 @@
+
+setP=set(["a","b","c"])
+
+setP.add("a")
+
+print(f"{setP}")
+
+frozenS=frozenset(["a","b","c"])
+
+print(f"{frozenS}")
