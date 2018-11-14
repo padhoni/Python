@@ -1,0 +1,20 @@
+Logging Mechanism:
+
+
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logger.INFO)
+formatter = logging.Formatter('%(levelname)s:%(message)s')
+file_handler = logging.FileHandler('<file name>')
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
+
+logger.info(' Info msg')
+
+
+Exception Handling:
+
+try:
+
+except Exception or IOError, EOFError etc.:
