@@ -1,0 +1,32 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Nov 23 15:33:58 2018
+
+@author: PADHONI
+"""
+
+class Stack:
+
+    def __init__(self):
+        self.stack = []
+
+    def add(self, dataval):
+# Use list append method to add element
+        if dataval not in self.stack:
+            self.stack.append(dataval)
+            return True
+        else:
+            return False
+# Use peek to look at the top of the stack
+
+    def peek(self):     
+	    return self.stack[0]
+
+stack1 = Stack()
+stack1.add("Plate1")
+stack1.add("Plate2")
+stack1.peek()
+print(stack1.peek())
+stack1.add("Plate3")
+stack1.add("Plate4")
+print(stack1.peek())
