@@ -1,0 +1,44 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Nov 23 14:02:06 2018
+
+@author: PADHONI
+"""
+
+class queueExample:
+    def __init__(self):
+        self.data= list()
+        
+    def addToTop(self, data1):
+        if data1 not in self.data:
+            self.data.insert(0, data1)
+            return True
+        return False
+    def size(self):
+        return len(self.queue)
+    
+    def prtn(self):
+        print(self.data)
+        
+    def deleteFromQ(self, data11):
+        self.data.remove(data11)
+    
+    def removefromq(self):
+      if len(self.data)>0:
+          return self.data.pop()
+      return ("No elements in Queue!")
+    #def printData(self):
+    #    datap=data.
+    #    while datap is not None:
+    #        print(datap)
+    #        datap=self.data
+    
+queuval=queueExample()
+queuval.addToTop("Entry1")
+queuval.addToTop("Entry2")
+queuval.addToTop("Entry3")
+queuval.prtn()
+queuval.deleteFromQ("Entry1")
+queuval.prtn()
+queuval.removefromq()
+queuval.prtn()
