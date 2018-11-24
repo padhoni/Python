@@ -1,0 +1,108 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+import queue
+
+FORBIDDEN = 'X'
+ALLOWED = '.'
+
+seen = set()
+
+def explore_south(grid, cell):
+    result = []
+    r = cell[0] + 1
+    c = cell[1]
+    while r < len(grid) and grid[r][c] == ALLOWED:
+        if (r,c) not in seen: 
+            result.append((r,c))
+            seen.add((r,c))
+        r += 1
+    return result
+
+def explore_north(grid, cell):
+    result = []
+    r = cell[0] - 1
+    c = cell[1]
+    while r >= 0 and grid[r][c] == ALLOWED:
+        if (r,c) not in seen: 
+            result.append((r,c))
+            seen.add((r,c))
+        r -= 1
+    return result
+
+def explore_west(grid, cell):
+    result = []
+    r = cell[0]
+    c = cell[1] + 1
+    while c < len(grid) and grid[r][c] == ALLOWED:
+        if (r,c) not in seen: 
+            result.append((r,c))
+            seen.add((r,c))
+        c += 1
+    return result    
+
+def explore_east(grid, cell):
+    result = []
+    r = cell[0]
+    c = cell[1] - 1
+    while c >= 0 and grid[r][c] == ALLOWED:
+        if (r,c) not in seen: 
+            result.append((r,c))
+            seen.add((r,c))
+        c -= 1
+    return result
+
+def explore_from_cell(grid, cell):
+    exploration = explore_south(grid, cell) + \
+    explore_north(grid, cell) + \
+    explore_east(grid, cell) +  \
+    explore_west(grid, cell)
+    return exploration
+
+def explore_from_cells(grid, level):
+    result = []
+    for cell in level:
+        result += explore_from_cell(grid, cell)
+
+    return result
+
+
+def bfs(grid, start, end):
+    if start == end:
+        return 0
+
+    seen.add(start)
+    next_level = [start]
+
+    count = 0
+    while end not in seen:    
+        next_level = explore_from_cells(grid, next_level)
+        count += 1
+        # print next_level
+        # print seen
+
+    return count
+        
+
+def minimumMoves(grid, startX, startY, goalX, goalY):
+    start = (startX, startY)
+    goal = (goalX, goalY)
+    return bfs(grid, start, goal)
+
+def read_grid(size):
+    grid = []
+    for _ in range(size):
+        grid.append(list(input().strip()))
+    return grid
+    
+if __name__ == "__main__":
+    n = int(input().strip())
+    grid = read_grid(n)
+    startX, startY, goalX, goalY = map(int, input().strip().split(' '))
+    result = minimumMoves(grid, startX, startY, goalX, goalY)
+    print(result)
+
