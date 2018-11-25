@@ -1,0 +1,36 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Nov 24 17:56:54 2018
+
+@author: PADHONI
+"""
+
+class Node:
+   def __init__(self, data):
+      self.data = data
+      self.next = None
+      self.prev = None
+
+class doubleList:
+   def __init__(self):
+      self.head = None
+
+   def push(self, NewVal):
+      NewNode = Node(NewVal)
+      NewNode.next = self.head
+      if self.head is not None:
+         self.head.prev = NewNode
+      self.head = NewNode
+
+   def listprint(self, node):
+      while (node is not None):
+         print(node.data),
+         last = node
+         node = node.next
+
+dllist = doubleList()
+dllist.push(50)
+dllist.push(51)
+dllist.push(52)
+
+dllist.listprint(dllist.head)
