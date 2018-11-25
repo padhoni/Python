@@ -1,0 +1,18 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Nov 24 20:48:04 2018
+
+@author: PADHONI
+"""
+
+for i in range (10, -1,-1):
+    print(i)
+    
+for j in range (10, 5,-2):
+    print("J's value")
+    print(j)
+
+k=0
+while k<5:
+    print(k)
+    k=k+1
