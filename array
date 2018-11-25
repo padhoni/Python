@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Nov 25 11:34:27 2018
+
+@author: PADHONI
+"""
+
+#from array import *
+import array
+
+arrDisp = array.array('i', [10,20,30,40,50])
+
+arrDisp.append(60)
+arrDisp.pop(2)
+for x in arrDisp:
+ print(x)
