@@ -1,0 +1,242 @@
+# Databricks notebook source
+import numpy as np
+a = np.array([1, 2, 3])
+print(type(a))
+print(a.shape)
+print(a[0], a[1], a[2])
+a[0] = 5
+print(a)
+b = np.array([[1,2,4],[9,7,6]])
+print(b.shape)
+print(b[0, 0], b[0, 1], b[1, 0])
+
+# COMMAND ----------
+
+import matplotlib.pyplot as plt
+plt.plot([1,2,3,4], [1,4,9,16], 'ro')
+plt.axis([0, 6, 0, 20])
+display(plt.show())
+
+# COMMAND ----------
+
+import numpy as np
+import matplotlib.pyplot as plt1
+import pylab as plt
+x = np.arange(0, 3 * np.pi, 0.1)
+y_sin = np.sin(x)
+y_cos = np.cos(x)
+
+plt.plot(x, y_sin)
+plt.plot(x, y_cos)
+plt.xlabel('x axis')
+plt.ylabel('y axis')
+plt.title('Sine and Cosine')
+plt.legend(['Sine', 'Cosine'])
+display(plt.show())
+
+# COMMAND ----------
+
+import numpy as np
+import matplotlib.pyplot as plt
+x = np.linspace(0, 2*np.pi, 50)
+y = np.sin(x)
+y2 = y + 0.1 * np.random.normal(size=x.shape)
+
+fig, ax = plt.subplots()
+ax.plot(x, y, 'k--')
+ax.plot(x, y2, 'ro')
+
+# set ticks and tick labels
+ax.set_xlim((0, 2*np.pi))
+ax.set_xticks([0, np.pi, 2*np.pi])
+ax.set_xticklabels(['0', '$\pi$','2$\pi$'])
+ax.set_ylim((-1.5, 1.5))
+ax.set_yticks([-1, 0, 1])
+
+# Only draw spine between the y-ticks
+ax.spines['left'].set_bounds(-1, 1)
+# Hide the right and top spines
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+# Only show ticks on the left and bottom spines
+ax.yaxis.set_ticks_position('left')
+ax.xaxis.set_ticks_position('bottom')
+
+# COMMAND ----------
+
+display(fig)
+
+# COMMAND ----------
+
+from ggplot import *
+p = ggplot(meat, aes('date','beef')) + \
+    geom_line(color='black') + \
+    scale_x_date(breaks=date_breaks('5 years'), labels='%b %Y') + \
+    scale_y_continuous(labels='comma') + theme_bw()
+
+# COMMAND ----------
+
+display(p)
+
+# COMMAND ----------
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# evenly sampled time at 200ms intervals
+t = np.arange(0., 5., 0.2)
+
+# red dashes, blue squares and green triangles
+plt.plot(t, t, 'r--', t, t**2, 'bs', t, t**3, 'g^')
+display(plt.show())
+
+# COMMAND ----------
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+ax = plt.subplot(111)
+
+t = np.arange(0.0, 5.0, 0.01)
+s = np.cos(2*np.pi*t)
+line, = plt.plot(t, s, lw=2)
+
+plt.annotate('local max', xy=(2, 1), xytext=(3, 1.5),
+            arrowprops=dict(facecolor='black', shrink=0.05),
+            )
+
+plt.ylim(-2,2)
+display(plt.show())
+
+# COMMAND ----------
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Fixing random state for reproducibility
+np.random.seed(19680801)
+
+mu, sigma = 100, 15
+x = mu + sigma * np.random.randn(10000)
+
+# the histogram of the data
+n, bins, patches = plt.hist(x, 50, normed=1, facecolor='g', alpha=0.75)
+
+
+plt.xlabel('Smarts')
+plt.ylabel('Probability')
+plt.title('Histogram of IQ')
+plt.text(60, .025, r'$\mu=100,\ \sigma=15$')
+plt.axis([40, 160, 0, 0.03])
+plt.grid(True)
+plt.show()
+
+# COMMAND ----------
+
+import numpy as np
+
+incomes = np.random.normal(27000, 15000, 10000)
+np.mean(incomes)
+
+# COMMAND ----------
+
+import matplotlib.pyplot as plt
+plt.hist(incomes, 50)
+display(plt.show())
+
+# COMMAND ----------
+
+np.median(incomes)
+
+# COMMAND ----------
+
+incomes = np.append(incomes, [1000000000])
+
+# COMMAND ----------
+
+np.median(incomes)
+
+# COMMAND ----------
+
+np.mean(incomes)
+
+# COMMAND ----------
+
+ages = np.random.randint(18, high=90, size=500)
+ages
+
+# COMMAND ----------
+
+from scipy import stats
+stats.mode (ages)
+
+# COMMAND ----------
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+incomes = np.random.normal(100.0, 20.0, 10000)
+
+plt.hist(incomes, 50)
+display(plt.show())
+
+# COMMAND ----------
+
+incomes.std()
+
+# COMMAND ----------
+
+incomes.var()
+
+# COMMAND ----------
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+values = np.random.uniform(-10.0, 10.0, 100000)
+plt.hist(values, 50)
+display(plt.show())
+
+# COMMAND ----------
+
+from scipy.stats import norm
+import matplotlib.pyplot as plt
+
+x=np.arange(-3, 3, 0.001)
+display(plt.plot(x, norm.pdf(x)))
+
+# COMMAND ----------
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+mu=5.0
+sigma=2.0
+values = np.random.normal(mu, sigma, 10000)
+plt.hist(values, 50)
+display(plt.show())
+
+# COMMAND ----------
+
+from scipy.stats import expon
+import matplotlib.pyplot as plt
+
+x=np.arange(0, 10, 0.001)
+plt.plot(x, expon.pdf(x))
+display(plt.show())
+
+# COMMAND ----------
+
+import seaborn as sns
+sns.set(style="white")
+
+df = sns.load_dataset("iris")
+g = sns.PairGrid(df, diag_sharey=False)
+g.map_lower(sns.kdeplot)
+g.map_diag(sns.kdeplot, lw=3)
+
+g.map_upper(sns.regplot)
+
+display(g.fig)
+
+# COMMAND ----------
