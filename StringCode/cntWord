@@ -1,0 +1,16 @@
+str1="hello m hello we hello we m going r thr"
+
+set1=set()
+for i in str1.split(" "):
+    set1.add(i)
+    
+nwstr=[]
+for j in set1:
+    cnt=0
+    for k in str1.split(" "):
+        if(j==k):
+            cnt=cnt+1
+    nwstr.append(cnt)
+    
+print(set1)
+print(nwstr)
