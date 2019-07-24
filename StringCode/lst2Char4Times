@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Jul 24 14:14:28 2019
+
+@author: PADHONI
+
+Printing last two char 4 times
+"""
+
+str='Python'
+ln=len(str)-2
+
+str1=str[ln:]
+
+print(str1*4)
