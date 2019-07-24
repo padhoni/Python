@@ -1,0 +1,10 @@
+mystr="red, white, black, red, green, black, white "
+
+my_list = mystr.split(",")
+
+aset=set()
+for i in my_list:
+    aset.add(i.strip(' '))
+
+myString1 = ",".join(aset )
+print(myString1)
